@@ -7,14 +7,13 @@
 % - ode_func: ordinary differential equation function
 % - t_range: time interval of integration
 % - y_in: initail vector of values to be integrated size(1, 6)
-% - ep: tolerance threshold of allowable truncation error
 % Returns:
 % - t_out: time of each step calculation
 % - y_out: matrix of integrated results size(6, t_out)
 %
 %%
 
-function [t_out, y_out] = runge_kutta_fehlberg(ode_func, t_range, y_in, ep)
+function [t_out, y_out] = runge_kutta_fehlberg(ode_func, t_range, y_in)
     
     % fehlberg coefficients for locating nodes within each time interval
     a = [0, 1/4, 3/8, 12/13, 1, 1/2];
@@ -50,7 +49,7 @@ function [t_out, y_out] = runge_kutta_fehlberg(ode_func, t_range, y_in, ep)
     while t < t_f
 
         % the smallest number such that x + eps(x) = x 
-        h_min = 12 * eps(t);
+        h_min = 16 * eps(t);
 
         % incremental time and function variables
         t_i = t;
@@ -77,7 +76,7 @@ function [t_out, y_out] = runge_kutta_fehlberg(ode_func, t_range, y_in, ep)
         max_trunc_error = max(abs(truncated_error));
 
         % compute the allowable truncation error
-        allow_trunc_error = ep * max(max(abs(y)), 1.0);
+        allow_trunc_error = max(max(abs(y)), 1.0);
 
         %...Compute the fractional change in step size:
         delta = (allow_trunc_error / (max_trunc_error + eps))^(1/5);

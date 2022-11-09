@@ -12,9 +12,19 @@
 %%
 
 function dy_dt = dynamic_motion(t_step, y_value)
+    global t_burn
+    global m_0
+    global m_dot
+    global T
+    global g_0
+    global R_E
+    global rho_0
+    global h_scale
+    global A
+    global C_D
 
     % initialize dydt as a column vector
-    dydt = zeros(length(y_value), 1);
+    dy_dt = zeros(length(y_value), 1);
 
     % velocity
     v = y_value(1); % [m/s]
@@ -29,15 +39,15 @@ function dy_dt = dynamic_motion(t_step, y_value)
     h = y_value(4); % [m]
 
     % velocity loss due to drag
-    v_D = y(5); % [m/s]
+    v_D = y_value(5); % [m/s]
 
     % velocity loss due to gravity
-    v_G = y(6); % [m/s]
+    v_G = y_value(6); % [m/s]
 
     % thrust mass flow rate equal to zero when time t exceeds the burn time
-    if t < t_burn
+    if t_step < t_burn
         % current total rocket vehicle mass with payload
-        m = m_0 - (m_dot * t); % [kg]
+        m = m_0 - (m_dot * t_step); % [kg]
     else
         % final total rocket vehicle mass with payload
         m = m_0 - (m_dot * t_burn); % [kg]
