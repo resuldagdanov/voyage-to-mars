@@ -1,7 +1,7 @@
 %%
 %
 % =========================================================================
-% ************ *  Dynamic Motion Equations of Rocket Launch   *************
+% **************  Dynamic Motion Equations of Rocket Launch   *************
 % =========================================================================
 % Arguments:
 % - t_step: time in seconds at a specific point

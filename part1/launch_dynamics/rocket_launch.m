@@ -44,8 +44,8 @@ v_D = -func(:, 5) * 1.e-3; % [km/s]
 % list of velocity loss due to gravity until burnout
 v_G = -func(:, 6) * 1.e-3; % [km/s]
 
-% initial launching vehicle dry mass with payload
-m = m_0 - m_P;
+% printing results at final burnout
+display_results([v(end), gamma(end), x(end), h(end), v_D(end), v_G(end)])
 
 
 

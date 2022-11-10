@@ -73,6 +73,9 @@ m_F = m_0 / n; % [kg]
 % fuel flow rate is assumed to be constant as thrust is constant (Eq.13.20)
 m_dot = T / (I_sp * g_0); % [kg/s]
 
+% initial launching vehicle dry mass with payload
+m = m_0 - m_P;
+
 % total propellant burning time
 t_burn = m_P / m_dot; % [s]
 
