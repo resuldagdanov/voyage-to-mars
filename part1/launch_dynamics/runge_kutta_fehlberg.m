@@ -13,7 +13,7 @@
 %
 %%
 
-function [t_out, y_out] = runge_kutta_fehlberg(ode_func, t_range, y_in)
+function [t_out, y_out] = runge_kutta_fehlberg(ode_func, t_range, y_in, er)
     configs;
     
     % fehlberg coefficients for locating nodes within each time interval
@@ -33,12 +33,19 @@ function [t_out, y_out] = runge_kutta_fehlberg(ode_func, t_range, y_in)
     % fehlberg coefficients for the fifth-order solution
     c_5 = [16/135, 0, 6656/12825, 28561/56430, -9/50, 2/55];
 
+    % error tolerance threshold
+    if nargin < 4
+        tolerance = 1.e-8;
+    else
+        tolerance = er;
+    end
+
     % initial and final time of total launch
     t_0 = t_range(1);
     t_f = t_range(2);
 
     % assumed initial time step
-    h = (t_range(2) - t_range(1)) / 100;
+    h = (t_f - t_0) / 100;
     
     % initialize function variables and timestep
     t = t_0;
@@ -77,7 +84,7 @@ function [t_out, y_out] = runge_kutta_fehlberg(ode_func, t_range, y_in)
         max_trunc_error = max(abs(truncated_error));
 
         % compute the allowable truncation error
-        allow_trunc_error = max(max(abs(y)), 1.0);
+        allow_trunc_error = tolerance * max(max(abs(y)), 1.0);
         
         %...Compute the fractional change in step size:
         delta = (allow_trunc_error / (max_trunc_error + eps))^(1/5);
@@ -91,7 +98,7 @@ function [t_out, y_out] = runge_kutta_fehlberg(ode_func, t_range, y_in)
             t_out = [t_out; t];
             y_out = [y_out; y'];
         end
-
+        
         % update the time step
         h = min(delta * h, 4 * h);
 

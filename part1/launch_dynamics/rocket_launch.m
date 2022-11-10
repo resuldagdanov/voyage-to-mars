@@ -30,7 +30,7 @@ y_in = [eps; gamma * deg2rad; eps; eps; eps; eps];
 v = func(:, 1) * 1.e-3; % [km/s]
 
 % flight path angle list until burnout
-gamma = func(:, 2) / deg2rad; % [deg]
+gamma = abs(func(:, 2)) / deg2rad; % [deg]
 
 % downrange distance list until burnout
 x = func(:, 3) * 1.e-3; % [km]

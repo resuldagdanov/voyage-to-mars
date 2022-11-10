@@ -21,7 +21,7 @@ function dy_dt = dynamic_motion(t_step, y_value)
     v = y_value(1); % [m/s]
 
     % flight path angle
-    gamma = y_value(2); % [rad]
+    gamma = abs(y_value(2)); % [rad]
 
     % downrange distance
     x = y_value(3); % [m]
@@ -46,13 +46,13 @@ function dy_dt = dynamic_motion(t_step, y_value)
     end
     
     % varying acceleration of gravity w.r.t altitude (Eq.1.36)
-    g = g_0 / ((1 + (h / R_E))^2); % [m/s^2]
+    g = g_0 / (1 + (h / R_E))^2; % [m/s^2]
 
     % varying atmospheric exponential density
-    rho = rho_0 * exp(-(h / h_scale)); % [kg/m^3]
+    rho = rho_0 * exp(-h / h_scale); % [kg/m^3]
 
     % drag force due to atmospheric density (Eq.13.1)
-    D = 0.5 * (rho * (v^2)) * (A * C_D); % [N]
+    D = 0.5 * rho * (v^2) * A * C_D; % [N]
 
     % velocity derivative (Eq.13.6)
     v_dot = (T / m) - (D / m) - (g * sin(gamma)); % [m/s^2]

@@ -26,13 +26,13 @@ g_0 = 9.81; % [m/s^2]
 rho_0 = 1.225; % [kg/m^3]
 
 % scale height of the atmosphere where the density is about 37%
-h_scale = 7500; % [m]
+h_scale = 7.5e3; % [m]
 
 % specific impulse of the rocket
-I_sp = 321; % [s]
+I_sp = 614.548; % [s]
 
 % thrust of the rocket, assumed constant until burnout for both stages
-T = 7654e3; % [N]
+T = 1e6; % [N]
 
 % drag coefficient
 C_D = 0.5;
@@ -44,10 +44,10 @@ d = 3.7; % [m]
 m_PL = 6666; % [kg]
 
 % propellant mass of the rocket
-m_P = 543210; % [kg]
+m_P = 54321; % [kg]
 
 % empy mass of the rocket
-m_E = 23456; % [kg]
+m_E = 12345; % [kg]
 
 % frontal area of the rocket
 A = pi * ((d^2) / 4); % [m^2]
