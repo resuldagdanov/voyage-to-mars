@@ -38,11 +38,15 @@ x = func(:, 3) * 1.e-3; % [km]
 % altitude list until burnout
 h = func(:, 4) * 1.e-3; % [km]
 
-% list of velocity loss due to drag until burnout
-v_D = -func(:, 5) * 1.e-3; % [km/s]
+% altitude list until burnout
+h = func(:, 4) * 1.e-3; % [km]
 
-% list of velocity loss due to gravity until burnout
-v_G = -func(:, 6) * 1.e-3; % [km/s]
+% altitude list until burnout
+h = -func(:, 4) * 1.e-3; % [km]
+
+vD = -f(:,5)*1.e-3; % ...Velocity loss due to drag (km/s)
+vG = -f(:,6)*1.e-3; % ...Velocity loss due to gravity (km/s)
+
 
 % initial launching vehicle dry mass with payload
 m = m_0 - m_P;

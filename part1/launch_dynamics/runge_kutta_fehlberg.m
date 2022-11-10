@@ -14,6 +14,7 @@
 %%
 
 function [t_out, y_out] = runge_kutta_fehlberg(ode_func, t_range, y_in)
+    configs;
     
     % fehlberg coefficients for locating nodes within each time interval
     a = [0, 1/4, 3/8, 12/13, 1, 1/2];
@@ -77,7 +78,7 @@ function [t_out, y_out] = runge_kutta_fehlberg(ode_func, t_range, y_in)
 
         % compute the allowable truncation error
         allow_trunc_error = max(max(abs(y)), 1.0);
-
+        
         %...Compute the fractional change in step size:
         delta = (allow_trunc_error / (max_trunc_error + eps))^(1/5);
 
@@ -85,7 +86,8 @@ function [t_out, y_out] = runge_kutta_fehlberg(ode_func, t_range, y_in)
         if max_trunc_error <= allow_trunc_error
             h = min(h, t_f - t);
             t = t + h;
-            y = y_i + h * func * c_5';
+            y = y_i + (h * func * c_5');
+
             t_out = [t_out; t];
             y_out = [y_out; y'];
         end

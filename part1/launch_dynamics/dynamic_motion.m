@@ -12,16 +12,7 @@
 %%
 
 function dy_dt = dynamic_motion(t_step, y_value)
-    global t_burn
-    global m_0
-    global m_dot
-    global T
-    global g_0
-    global R_E
-    global rho_0
-    global h_scale
-    global A
-    global C_D
+    configs;
 
     % initialize dydt as a column vector
     dy_dt = zeros(length(y_value), 1);
@@ -53,7 +44,7 @@ function dy_dt = dynamic_motion(t_step, y_value)
         m = m_0 - (m_dot * t_burn); % [kg]
         T = 0;
     end
-
+    
     % varying acceleration of gravity w.r.t altitude (Eq.1.36)
     g = g_0 / ((1 + (h / R_E))^2); % [m/s^2]
 
