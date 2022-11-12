@@ -11,13 +11,19 @@
 %%
 
 % convert degrees to radians
-deg2rad = pi/180;
+deg2_rad = pi/180;
+
+% eccentricity of the circular orbit around Earth
+e = 0;
 
 % launch flight angle between ground horizon
 gamma = 90; % [deg]
 
-% radius of a planet Earth
+% radius of a planet Earth (Table.A.1) 
 R_E = 6378e3; % [m]
+
+% gravitational parameter of Earth (Table.A.2)
+mu = 3986e5; % [m^3/s^2]
 
 % graviational acceleration at sea level
 g_0 = 9.81; % [m/s^2]

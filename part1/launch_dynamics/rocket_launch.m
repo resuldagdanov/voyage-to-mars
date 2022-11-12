@@ -9,7 +9,7 @@
 % - configuration parameters are choosen to satisfy project requirements
 % - plots results for visualization
 % - run this script as a main code in calculation of followings:
-%   - burnout velocity after stage-2
+%   - burnout velocity after stage-1
 %   - altitude of the payload after final burnout
 %
 %%
@@ -21,7 +21,7 @@ clear; clc;
 configs;
 
 % initial conditions vector (Eq.13.27)
-y_in = [eps; gamma * deg2rad; eps; eps; eps; eps];
+y_in = [eps; gamma * deg2_rad; eps; eps; eps; eps];
 
 % call to Runge-Kutta numerical integrator to solve df/dt = f(t)
 [t, func] = runge_kutta_fehlberg(@dynamic_motion, [0, t_burn], y_in);
@@ -30,7 +30,7 @@ y_in = [eps; gamma * deg2rad; eps; eps; eps; eps];
 v = func(:, 1) * 1.e-3; % [km/s]
 
 % flight path angle list until burnout
-gamma = abs(func(:, 2)) / deg2rad; % [deg]
+gamma = abs(func(:, 2)) / deg2_rad; % [deg]
 
 % downrange distance list until burnout
 x = func(:, 3) * 1.e-3; % [km]
@@ -46,6 +46,7 @@ v_G = -func(:, 6) * 1.e-3; % [km/s]
 
 % printing results at final burnout
 display_results([v(end), gamma(end), x(end), h(end), v_D(end), v_G(end)])
+
 
 
 
