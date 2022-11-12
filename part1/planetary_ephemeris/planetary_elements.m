@@ -36,4 +36,10 @@ function [elements, rates] = planetary_elements(planet_name)
     % convert from arcseconds to fractions of a degree
     rates(3:6) = rates(3:6) / 3600;
 
+    % NOTE:
+    % as Earth and Mars orbits are assumed to be circular orbits
+    % around the Sun, their eccentricities are modified to zero
+    elements(2) = 0.0;
+    rates(2) = 0.0;
+    
 end
