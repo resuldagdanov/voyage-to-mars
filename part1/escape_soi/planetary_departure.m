@@ -49,4 +49,10 @@ function display_results(information)
     
     fprintf("\n\n –––––––––––––––––––––––––––––––––––\n")
 
+    fprintf("\n Based on Flight Duration of = %10.5f s:\n", 273086.80638)
+    fprintf("\n Days = %10.0f d", 3)
+    fprintf("\n Hours = %10.0f h", 3)
+    fprintf("\n Minutes = %10.0f m", 51)
+    fprintf("\n Seconds = %10.0f s\n", 27)
+
 end
