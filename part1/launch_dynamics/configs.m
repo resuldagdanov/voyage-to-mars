@@ -11,7 +11,7 @@
 %%
 
 % convert degrees to radians
-deg2_rad = pi/180;
+deg2_rad = pi / 180;
 
 % eccentricity of the circular orbit around Earth
 e = 0;

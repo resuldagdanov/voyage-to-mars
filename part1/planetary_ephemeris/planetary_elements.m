@@ -29,9 +29,9 @@ function [elements, rates] = planetary_elements(planet_name)
     end
     
     % convert from AU to km
-    au2km = 149597871; %[km]
-    elements(1) = elements(1) * au2km;
-    rates(1) = rates(1) * au2km;
+    au_2_km = 149597871; %[km]
+    elements(1) = elements(1) * au_2_km;
+    rates(1) = rates(1) * au_2_km;
     
     % convert from arcseconds to fractions of a degree
     rates(3:6) = rates(3:6) / 3600;

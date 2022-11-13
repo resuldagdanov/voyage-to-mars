@@ -13,9 +13,11 @@
 % Earth and Mars inclination angles (Table.A.1)
 inclination_E = 23.45; % [deg]
 inclination_M = 25.19; % [deg]
+% Note:
+% in this project, inclinations are assumed to be the same for planets
 
 % convert degrees to radians
-deg2_rad = pi/180;
+deg2_rad = pi / 180;
 
 % gravitational parameter of Earth (Table.A.2)
 mu = 398600; % [km^3/s^2]
