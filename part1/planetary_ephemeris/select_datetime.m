@@ -8,7 +8,7 @@
 % - orbital ephemeris information is used to calculate planetary positions
 % - earth and mars orbits are assumed to have circular orbits
 % - both earth and mars planets lay on the same plane with inclination zero
-% - true anomaly has to be 45 degrees for Hohmann transfer to initialize
+% - true anomaly has to be 44.57 degrees for Hohmann transfer to initialize
 % - date and time of launch are determined by trial and errors
 % - following launch date is assumed to be selected to satisfy true anomaly
 %
@@ -17,13 +17,22 @@
 % house-keeping
 clear; clc;
 
+% time passed until reaching Earth parking orbit
+launch_duration = 327.48588; % [s] -> 5min 27sec
+
+% time passed during hyperbolic orbit maneuver to escape Earth SOI
+hyperbolic_duration = 273086.80638; % [s] -> 3day 3hour 51min 27sec
+
+% time required before starting hyperbolic trajectory to escape Earth SOI
+parking_duration = 0; % [s]
+
 % launch date + time to reach parking orbit + duration until escaping SOI 
-year_ = 2023;
-month_ = 5;
-day_ = 11;
-hour_ = 11;
-minute_ = 11;
-second_ = 11;
+year_ = 2023; % 2023
+month_ = 5; % 5
+day_ = 10; % 7
+hour_ = 15; % 11
+minute_ = 8; % 11
+second_ = 6; % 11
 
 % compact form of selected launch date and time
 date_time = [year_, month_, day_, hour_, minute_, second_];
@@ -40,8 +49,8 @@ true_anomaly_M = values_Mars(8); % [deg]
 display_results(values_Earth, "Earth")
 display_results(values_Mars, "Mars")
 
-fprintf("\n True Anomaly Before Hohmann Transfer Started = %10.5f deg\n", ...
-        true_anomaly_M - true_anomaly_E)
+fprintf("\n True Anomaly Before Hohmann Transfer Started =" + ...
+        "%10.5f deg\n", true_anomaly_M - true_anomaly_E);
 
 %%
 

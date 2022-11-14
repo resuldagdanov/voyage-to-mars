@@ -33,7 +33,7 @@ function information = hyperbolic_trajectory(altitude, I_sp)
     % gravitational acceleration constant
     g_0 = 9.81 * 1.e-3; % [km/s^2]
 
-    % hyperbolic excess speed of the departure hyperbola (Eq.8.35)
+    % hyperbolic excess speed of the Earth departure hyperbola (Eq.8.35)
     v_inf = sqrt((mu_sun/R_E)) * (sqrt((2*R_M) / (R_E + R_M))-1); % [km/s]
     
     % speed of the spacecraft in circular parking orbit (Eq.8.41)

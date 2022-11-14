@@ -32,7 +32,7 @@ display_results(information)
 function display_results(information)
 
     fprintf("\n\n –––––––––––––––––––––––––––––––––––\n")
-    fprintf("\n At Hyperbolic Departure Orbit:")
+    fprintf("\n At Hyperbolic Earth Departure Orbit:")
     
     fprintf("\n Hyperbolic Excess Speed = %10.5f km/s", information(1))
     fprintf("\n Vehicle Parking Orbit Speed = %10.5f km/s", information(2))

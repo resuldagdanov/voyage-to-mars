@@ -45,8 +45,8 @@ v_D = -func(:, 5) * 1.e-3; % [km/s]
 v_G = -func(:, 6) * 1.e-3; % [km/s]
 
 % printing results at final burnout
-display_results([v(end), gamma(end), x(end), h(end), v_D(end), v_G(end), ...
-                 t(end)])
+display_results([v(end), gamma(end), x(end), h(end), v_D(end), ...
+                 v_G(end), t(end)])
 
 
 
