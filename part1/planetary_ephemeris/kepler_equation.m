@@ -26,7 +26,7 @@ function E = kepler_equation(eccentricity, anomaly)
     % iterate (Eq.3.17) until E is determined to within error tolerance
     ratio = 1;
 
-    % iterate (Eq.3.17) Newton's method to solve Kepler-s equation 
+    % iterate (Eq.3.17) Newton's method to solve Kepler's equation 
     while abs(ratio) > error
         ratio = (E - (eccentricity * sin(E)) - anomaly) / ...
                 (1 - eccentricity * cos(E));

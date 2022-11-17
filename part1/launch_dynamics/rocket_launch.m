@@ -15,7 +15,7 @@
 %%
 
 % house-keeping
-clear; clc;
+clear; clc; close all;
 
 % store all predefined configurations in workspace
 configs;
@@ -48,7 +48,5 @@ v_G = -func(:, 6) * 1.e-3; % [km/s]
 display_results([v(end), gamma(end), x(end), h(end), v_D(end), ...
                  v_G(end), t(end)])
 
-
-
-
-
+% plot the results
+visualize(v, h, v_D, v_G, t)

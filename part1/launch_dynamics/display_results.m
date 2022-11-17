@@ -9,7 +9,6 @@
 %%
 
 function display_results(output_y)
-
     fprintf("\n\n –––––––––––––––––––––––––––––––––––\n")
     fprintf("\n At Burnout:")
     
