@@ -1,0 +1,23 @@
+
+function translated = orbital_to_body(euler_angles, state_vector)
+    
+    % eulear angles in radians
+    roll = euler_angles(1);
+    pitch_ = euler_angles(2);
+    yaw = euler_angles(3);
+    
+    direction_cosine_matrix = [ ...
+        cos(roll) * cos(pitch_), ...
+        cos(pitch_) * sin(roll), ...
+        -sin(pitch_);
+        sin(yaw) * cos(roll) * sin(pitch_) - cos(yaw) * sin(roll), ...
+        sin(yaw) * sin(roll) * sin(pitch_) + cos(yaw) * cos(roll), ...
+        sin(yaw) * cos(roll);
+        cos(yaw) * sin(pitch_) * cos(roll) + sin(yaw) * sin(roll), ...
+        cos(yaw) * sin(pitch_) * sin(roll) + sin(yaw) * cos(roll), ...
+        cos(yaw) * sin(pitch_)
+    ];
+
+    % transformation from orbital frame to body frame
+    translated = direction_cosine_matrix * state_vector;
+end
